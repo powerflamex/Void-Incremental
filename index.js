@@ -30,6 +30,7 @@ let inc
 async function main () {
   num = await keyv.get('num')
   inc = await keyv.get('inc')
+
   setInterval(loop, 5000)
 }
 
@@ -63,8 +64,16 @@ client.on('message', async message => {
 
   const msg = message.content.trim()
   const spaceIdx = msg.indexOf(' ')
-  const command = msg.substr(0, spaceIdx)
-  const args = msg.substr(spaceIdx).trim()
+
+  let command
+  let args
+  if (spaceIdx === -1) {
+    command = msg
+    args = ''
+  } else {
+    command = msg.substr(0, spaceIdx)
+    args = msg.substr(spaceIdx).trim()
+  }
 
   switch (command) {
     // Opens the store.
