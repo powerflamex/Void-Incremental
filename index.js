@@ -68,10 +68,10 @@ client.on('message', async message => {
   let command
   let args
   if (spaceIdx === -1) {
-    command = msg
+    command = msg.toLowerCase()
     args = ''
   } else {
-    command = msg.substr(0, spaceIdx)
+    command = msg.substr(0, spaceIdx).toLowerCase()
     args = msg.substr(spaceIdx).trim()
   }
 
