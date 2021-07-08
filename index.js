@@ -27,9 +27,9 @@ let num
 let inc
 
 /// Loads all application resources, runs the application loop.
-function main () {
-  num = keyv.get('num')
-  inc = keyv.get('inc')
+async function main () {
+  num = await keyv.get('num')
+  inc = await keyv.get('inc')
   setInterval(loop, 5000)
 }
 
