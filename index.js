@@ -23,10 +23,17 @@ const CHANNEL_ID = '859076445094674454'
 const ACCEPT = '✅'
 const DENY = '❌'
 
+let num
+let inc
+
 /// Loads all application resources, runs the application loop.
-async function main () {
+function main () {
+  num = keyv.get('num')
+  inc = keyv.get('inc')
   setInterval(loop, 5000)
 }
+
+main()
 
 /// The application loop.
 async function loop () {
@@ -38,9 +45,6 @@ async function loop () {
   await keyv.set('inc', inc)
 }
 
-main()
-let { num, inc } = main
-
 client.on('message', async message => {
   // Ignores messages on the wrong channel, or messages from bots.
   if (message.channel.id !== CHANNEL_ID || message.author.bot) { return }
@@ -48,8 +52,12 @@ client.on('message', async message => {
   // Sends a message, deletes it 5s later.
   const sendAndDelete = async (msg, reply = false) => {
     let sentMsg
-    if (reply) sentMsg = await message.reply(msg)
-    else sentMsg = await message.channel.send(msg)
+    if (reply) {
+      sentMsg = await message.reply(msg)
+    } else {
+      sentMsg = await message.channel.send(msg)
+    }
+
     setTimeout(() => { sentMsg.delete() }, 5000)
   }
 
