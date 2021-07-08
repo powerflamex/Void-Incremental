@@ -2,7 +2,7 @@
 ///
 /// The arguments passed are the current number, and the current set of upgrades.
 /// The returned value is the message to be shown.
-export function store (num, upgrades) {
+module.exports = function store (num, upgrades) {
   // The message to post.
   let msg = ''
 

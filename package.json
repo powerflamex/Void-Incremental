@@ -2,7 +2,7 @@
   "name": "ss-incremental",
   "version": "1.0.0",
   "description": "",
-  "main": "bot.js",
+  "main": "index.js",
   "scripts": {
     "standard": "standard --fix"
   },
