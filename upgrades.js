@@ -5,6 +5,7 @@ module.exports = {
     cost: 15,
     execUpgrade: i => i * 2
   },
+
   'faster gain': {
     name: 'Faster Gain',
     description: 'Faster Gain: Decrease slowmode time to 10 seconds.',
